@@ -1,0 +1,37 @@
+<head>
+  <title>resume-tube</title>
+</head>
+
+<body>
+{{> mainBody}}
+</body>
+
+<template name="mainBody">
+{{> playVideo}}
+{{> addNewPlaylist}}
+{{> listPlaylists}}
+</template>
+
+<template name="addNewPlaylist">
+<h1>Add New Playlist</h1>
+<form class="new-playlist">
+  <input type="text" name="playlist-url" placeholder="Paste a link to YouTube Playlist URL" />
+</form>
+</template>
+
+<template name="playVideo">
+<div id="player"></div>
+</template>
+
+<template name="listPlaylists">
+<h1>List Playlists</h1>
+<ul>
+{{#each playlists}}
+{{> playlist}}
+{{/each}}
+</ul>
+</template>
+
+<template name="playlist">
+<li><a href="">{{list}}</a></li>
+</template>
