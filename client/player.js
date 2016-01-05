@@ -19,8 +19,8 @@ Tracker.autorun(function() {
       recordTimerId = null;
     }
     Meteor.setInterval(function() {
-      Playlists.update(playing._id, {$set: {index: player.getPlaylistIndex(), time: player.getCurrentTime()}});
+      Meteor.call('update_playlist', playing._id, player.getPlaylistIndex(), player.getCurrentTime());
     }
-    , 5000)
+    , 5000);
   }
 });
