@@ -13,7 +13,7 @@ var recordTimerId = null;
 // record our current position in playlist
 Tracker.autorun(function() {
   playing = Session.get('playingPlaylist')
-  if(playing !== null) {
+  if(typeof(playing) !== 'undefined' && playing !== null) {
     if(recordTimerId !== null) {
       Meteor.clearInterval(recordTimerId);
       recordTimerId = null;
