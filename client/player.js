@@ -1,6 +1,6 @@
+//
 player = null;
 onYouTubeIframeAPIReady = function () {
-  Session.set('readyToPlay', true)
   player = new YT.Player("player", {
       height: "400", 
       width: "600" 
@@ -18,9 +18,22 @@ Tracker.autorun(function() {
       Meteor.clearInterval(recordTimerId);
       recordTimerId = null;
     }
-    Meteor.setInterval(function() {
-      Meteor.call('update_playlist', playing._id, player.getPlaylistIndex(), player.getCurrentTime());
+    id = playing._id;
+    if(player !== null){
+      index = player.getPlaylistIndex();
+      time = player.getCurrentTime();
+    } else {
+      index = -1;
+      time = 0;
     }
-    , 5000);
+    if(index != -1) {
+      //
+      recordTimerId = Meteor.setInterval(function() {
+        index = player.getPlaylistIndex();
+        time = player.getCurrentTime();
+        Meteor.call('update_playlist', id, index, time);
+      }
+      , 5000);
+    }
   }
 });
