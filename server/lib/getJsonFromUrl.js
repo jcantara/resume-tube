@@ -1,5 +1,9 @@
 getJsonFromUrl = function(query) {
   var result = {};
+  query = query.split("?")
+  if(query.length == 2) {
+    query = query[1];
+  }
   query.split("&").forEach(function(part) {
     if(!part) return;
     part = part.replace("+"," ");
