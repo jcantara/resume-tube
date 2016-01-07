@@ -5,5 +5,11 @@ Template.playlist.events = {
     player.loadPlaylist({list: this.list, index: this.index, startSeconds: this.time});
     Session.set('playingPlaylist', this);
     evt.preventDefault();
+  },
+  'click .delete': function(evt, template) {
+    if(confirm("Delete this playlist?")) {
+      Meteor.call('remove_playlist', this._id);
+    }
+    evt.preventDefault();
   }
 };
