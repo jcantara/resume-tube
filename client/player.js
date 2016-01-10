@@ -59,7 +59,9 @@ function updatePlaylist() {
   playlistId = Session.get('playingPlaylistId');
   index = player.getPlaylistIndex();
   time = player.getCurrentTime();
-  Meteor.call('update_playlist', playlistId, index, time);
+  if(index >=0) { // is -1 when watching related video or "something else"
+    Meteor.call('update_playlist', playlistId, index, time);
+  }
 }
 
 Tracker.autorun(function() {
