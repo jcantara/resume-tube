@@ -16,9 +16,33 @@ Template.playlist.events = {
 Template.playlist.helpers({
   displayName: function() {
     if(this.title) {
-      return this.title
+      return `${this.title} - ${getTimeFromSeconds(this.time)} of ${getTimeFromSeconds(this.duration)} in ${this.index+1} of ${this.itemCount}`
     } else {
       return this.list
     }
   }
 });
+
+// from http://fiddle.jshell.net/YvE7x/2/
+function getTimeFromSeconds(totalSeconds) {
+  if (totalSeconds < 86400) {
+      var dt = new Date("01/01/2000 0:00");
+      dt.setSeconds(totalSeconds);
+      return formatTime(dt);
+  } else {
+      return null;
+  }
+}
+
+function formatTime(dt) {
+  var h = dt.getHours(),
+      m = dt.getMinutes(),
+      s = dt.getSeconds(),
+      r = "";
+  if (h > 0) {
+      r += (h > 9 ? h.toString() : "0" + h.toString()) + ":";
+  }
+  r += (m > 9 ? m.toString() : "0" + m.toString()) + ":"
+  r += (s > 9 ? s.toString() : "0" + s.toString());
+  return r;
+}

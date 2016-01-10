@@ -59,8 +59,9 @@ function updatePlaylist() {
   playlistId = Session.get('playingPlaylistId');
   index = player.getPlaylistIndex();
   time = player.getCurrentTime();
+  duration = player.getDuration();
   if(index >=0) { // is -1 when watching related video or "something else"
-    Meteor.call('update_playlist', playlistId, index, time);
+    Meteor.call('update_playlist', playlistId, index, time, duration);
   }
 }
 
@@ -71,7 +72,8 @@ Tracker.autorun(function() {
     if(typeof(playingId) !== 'undefined' && playingId !== null) {
       playing = Playlists.findOne(playingId)
       currentlyPlaying = player.getPlaylistId();
-      if(playing.list !== currentlyPlaying) {
+      if(playing && playing.list !== currentlyPlaying) {
+        //
         if(Session.get('playerPaused')) {
           player.cuePlaylist({list: playing.list, index: playing.index, startSeconds: playing.time});
         } else {
