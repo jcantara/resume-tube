@@ -12,3 +12,13 @@ Template.playlist.events = {
     evt.preventDefault();
   }
 };
+
+Template.playlist.helpers({
+  displayName: function() {
+    if(this.title) {
+      return this.title
+    } else {
+      return this.list
+    }
+  }
+});
