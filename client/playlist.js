@@ -1,9 +1,8 @@
-Session.setDefault('playingPlaylist', null);
+Session.setDefault('playingPlaylistId', null);
 
 Template.playlist.events = {
   'click a': function(evt, template) {
-    player.loadPlaylist({list: this.list, index: this.index, startSeconds: this.time});
-    Session.set('playingPlaylist', this);
+    Session.set('playingPlaylistId', this._id);
     evt.preventDefault();
   },
   'click .delete': function(evt, template) {
