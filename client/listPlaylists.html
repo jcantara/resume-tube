@@ -1,9 +1,10 @@
 <template name="listPlaylists">
 <div class="col-md-8 col-md-offset-2 col-sm-12">
-  <ul>
-  {{#each playlists}}
-  {{> playlist}}
-  {{/each}}
-  </ul>
+  <table class="table">
+    <tr><th>Channel</th><th>Name</th><th>Video</th><th>Playlist</th><th>Delete</th></tr>
+    {{#each playlists}}
+    {{> playlist}}
+    {{/each}}
+  </table>
 </div>
 </template>

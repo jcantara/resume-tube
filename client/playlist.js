@@ -6,7 +6,7 @@ Template.playlist.events = {
     evt.preventDefault();
   },
   'click .delete': function(evt, template) {
-    if(confirm("Delete this playlist?")) {
+    if(confirm('Delete playlist "' + (this.title || this.list) + '"?')) {
       Meteor.call('remove_playlist', this._id);
     }
     evt.preventDefault();
@@ -16,10 +16,16 @@ Template.playlist.events = {
 Template.playlist.helpers({
   displayName: function() {
     if(this.title) {
-      return this.title + " - " + getTimeFromSeconds(this.time) + " of " + getTimeFromSeconds(this.duration) + " in " + (this.index+1) + " of " + this.itemCount
+      return this.title
     } else {
       return this.list
     }
+  },
+  videoTime: function() {
+    return getTimeFromSeconds(this.time) + " of " + getTimeFromSeconds(this.duration)
+  },
+  playlistCount: function() {
+    return (this.index+1) + " of " + this.itemCount
   }
 });
 

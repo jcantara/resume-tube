@@ -21,7 +21,8 @@ fetchPlaylistMetaData = function(ids) {
         if(playlist) {
           var title = apiPlaylist["snippet"]["title"]
           var itemCount = apiPlaylist["contentDetails"]["itemCount"]
-          Playlists.update(playlist._id, {$set: {title: title, itemCount: itemCount}});
+          var channelTitle = apiPlaylist["snippet"]["channelTitle"]
+          Playlists.update(playlist._id, {$set: {title: title, itemCount: itemCount, channelTitle: channelTitle}});
         }
       });
     }
