@@ -16,7 +16,7 @@ Template.playlist.events = {
 Template.playlist.helpers({
   displayName: function() {
     if(this.title) {
-      return `${this.title} - ${getTimeFromSeconds(this.time)} of ${getTimeFromSeconds(this.duration)} in ${this.index+1} of ${this.itemCount}`
+      return this.title + " - " + getTimeFromSeconds(this.time) + " of " + getTimeFromSeconds(this.duration) + " in " + (this.index+1) + " of " + this.itemCount
     } else {
       return this.list
     }
