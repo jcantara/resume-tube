@@ -25,7 +25,11 @@ Template.playlist.helpers({
     return getTimeFromSeconds(this.time) + " of " + getTimeFromSeconds(this.duration)
   },
   playlistCount: function() {
-    return (this.index+1) + " of " + this.itemCount
+    if(this.itemCount) {
+      return (this.index+1) + " of " + this.itemCount
+    } else {
+      return (this.index+1)
+    }
   }
 });
 
