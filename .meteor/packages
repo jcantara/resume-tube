@@ -22,3 +22,5 @@ ejson
 huttonr:bootstrap3
 http
 underscore
+accounts-google
+service-configuration
