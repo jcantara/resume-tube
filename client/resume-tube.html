@@ -8,10 +8,16 @@
 
 <template name="mainBody">
 <div class="container">
-  {{> account}}
-  {{> player}}
-  {{> error}}
-  {{> addNewPlaylist}}
-  {{> listPlaylists}}
+  {{#if isLoggingIn}}
+    <div class="col-md-8 col-md-offset-2 col-sm-12">
+      {{> atForm}}
+    </div>
+  {{else}}
+    {{> account}}
+    {{> player}}
+    {{> error}}
+    {{> addNewPlaylist}}
+    {{> listPlaylists}}
+  {{/if}}
 </div>
 </template>

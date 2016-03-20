@@ -1,3 +1,11 @@
+Session.setDefault('isLoggingIn', false);
+
+Template.account.helpers({
+  signedUp: function() {
+    return Package["brettle:accounts-login-state"].LoginState.signedUp()
+  }
+});
+
 Template.account.events({
 
   'click .logout': function(evt) {
@@ -5,7 +13,7 @@ Template.account.events({
     evt.preventDefault();
   },
   'click .login': function(evt) {
-    Meteor.loginWithGoogle({requestPermissions: []});
+    Session.set('isLoggingIn', true);
     evt.preventDefault();
   }
 
