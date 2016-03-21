@@ -1,3 +1,5 @@
 {
-  "youtubeApiKey": "API Server Key for Youtube from Google ABC123BEEF"
+  "youtubeApiKey": "API Server Key for Youtube from Google ABC123BEEF",
+  "googleClientSecret": "Google API client secret for Oauth",
+  "googleClientId": "Google API client ID for Oauth"
 }
