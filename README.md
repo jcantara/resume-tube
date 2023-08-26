@@ -1,7 +1,7 @@
 # resume-tube
 Resume youtube playlists where you left off. 
 
-Now hosted at https://resume-tube.emjas.net
+# This project is archived, old, out of date, unused
 
 To run your own instance, copy `settings.json.example` to `settings.json`; edit it to have your YouTube API key (optional, but the playlists won't display anything useful otherwise) and run:
 
